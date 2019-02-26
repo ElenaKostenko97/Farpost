@@ -8,9 +8,13 @@
       "typescript": "2.5.2"
    },
    "dependencies": {
-      "typeorm": "0.2.14",
+      "axios": "^0.18.0",
+      "cheerio": "^1.0.0-rc.2",
+      "iconv-lite": "^0.4.24",
+      "lodash": "^4.17.11",
+      "pg": "^7.3.0",
       "reflect-metadata": "^0.1.10",
-      "pg": "^7.3.0"
+      "typeorm": "0.2.14"
    },
    "scripts": {
       "start": "ts-node src/index.ts"

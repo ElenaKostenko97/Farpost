@@ -1,8 +1,21 @@
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 import {User} from "./entity/User";
+import {Rent} from "./entity/Rent";
+import {load} from "../scraping";
 
 createConnection().then(async connection => {
+    const promise = await load();
+    console.log(promise);
+
+    const promiseFlat = promise.map(async flat => {
+        const rent = new Rent();
+        rent.TypeOfApartment = flat.title;
+        rent.Price = flat.price;
+        await connection.manager.save(rent);
+    });
+
+    Promise.all(promiseFlat);
 
     console.log("Inserting a new user into the database...");
     const user = new User();

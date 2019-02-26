@@ -6,25 +6,24 @@ export class Rent {
     @PrimaryGeneratedColumn() //id квартиры
     id: number;
 
-    @Column() //Тип квартиры
+    @Column({nullable: true}) //Тип квартиры
     TypeOfApartment: string;
 
-    @Column() //Адрес
+    @Column({nullable: true}) //Адрес
     Address: string;
 
-    @Column() //Район
+    @Column({nullable: true}) //Район
     Area: string;
 
-    @Column() //Предложение
+    @Column({nullable: true}) //Предложение
     Offer: string;
 
-    @Column() //Площадь
+    @Column({nullable: true}) //Площадь
     Square: number;
 
-    @Column() //Цена
-    Price: number;
+    @Column({nullable: true}) //Цена
+    Price: string;
 
-    @Column() //Дата размещения
+    @Column({nullable: true}) //Дата размещения
     Date: Date;
-
 }
