@@ -4,8 +4,7 @@ const concat = require("lodash/concat");
 const range = require("lodash/range"); // проверка массива на пустоту
 const iconv = require("iconv-lite");
 
-//Проверить массив на наличие записей
-//Доделать записи в таблицу
+
 //rest api почитать
 
 
@@ -18,9 +17,10 @@ export async function load() {
     try {
         const map = range(1).map(it => {
             return axios.get(tasks.url, {
-                params: {"page": 1},
-                responseEncoding: "binary",
-                responseType: "arraybuffer"}
+                    params: {"page": 1},
+                    responseEncoding: "binary",
+                    responseType: "arraybuffer"
+                }
             );
         });
 
@@ -37,23 +37,27 @@ export async function load() {
                 const id = $(el).find("[data-bulletin-id]").data("bulletin-id");
                 const title = $(el).find('div[class="title"] > a').text();
                 const price = $(el).find('span[data-role="price"]').text();
-                const adress = $(el).find('div[class="annotation auto-shy"]').text();
+                const address = $(el).find('div[class="annotation auto-shy"]').text();
+
+                const newaddress = address.replace(/64, 71 микрорайоны/gi, '64,71 микрорайоны');
 
                 const titleSplit = title.split(", ");
-                const adressSplit = adress.split(", ");
+                const addressSplit = newaddress.split(", ");
 
                 const roomNum = titleSplit[0];
                 const street = titleSplit[1];
 
+                const area = addressSplit[0];
+                const offer = addressSplit[1];
+                const square = addressSplit[2];
 
-
-                return {id, title, price, adress, roomNum};
+                return {id, title, price, newaddress, roomNum, street, area, offer, square};
 
 
             }).get();
         });
 
-        // console.log(mapIDS);
+        console.log(mapIDS);
         return result;
     } catch (e) {
         console.error(e);

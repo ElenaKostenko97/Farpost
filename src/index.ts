@@ -8,10 +8,18 @@ createConnection().then(async connection => {
     const promise = await load();
     console.log(promise);
 
+
+
     const promiseFlat = promise.map(async flat => {
         const rent = new Rent();
-        rent.TypeOfApartment = flat.title;
+        rent.idflat = flat.id;
+        rent.TypeOfApartment = flat.roomNum;
+        rent.Address = flat.street;
+        rent.Area = flat.area;
+        rent.Offer = flat.offer;
+        rent.Square = flat.square;
         rent.Price = flat.price;
+       // rent.Date = flat.id;
         await connection.manager.save(rent);
     });
 

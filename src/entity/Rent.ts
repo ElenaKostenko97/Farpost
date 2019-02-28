@@ -3,8 +3,11 @@ import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 @Entity()
 export class Rent {
 
-    @PrimaryGeneratedColumn() //id квартиры
+    @PrimaryGeneratedColumn() //id
     id: number;
+
+    @Column({nullable: true}) //id квартиры
+    idflat: string;
 
     @Column({nullable: true}) //Тип квартиры
     TypeOfApartment: string;
@@ -19,7 +22,7 @@ export class Rent {
     Offer: string;
 
     @Column({nullable: true}) //Площадь
-    Square: number;
+    Square: string;
 
     @Column({nullable: true}) //Цена
     Price: string;
