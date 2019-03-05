@@ -1,11 +1,8 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const concat = require("lodash/concat");
-const range = require("lodash/range"); // проверка массива на пустоту
+const range = require("lodash/range");
 const iconv = require("iconv-lite");
-
-
-//rest api почитать
 
 
 const tasks = {
@@ -51,8 +48,9 @@ export async function load() {
                 const offer = addressSplit[1];
                 const square = addressSplit[2];
 
-                return {id, title, price, newaddress, roomNum, street, area, offer, square};
-
+                if (titleSplit.length == 2 && addressSplit.length == 3){
+                    return {id, title, price, newaddress, roomNum, street, area, offer, square};
+                }
 
             }).get();
         });

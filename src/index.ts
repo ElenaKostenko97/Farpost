@@ -13,13 +13,14 @@ createConnection().then(async connection => {
     const promiseFlat = promise.map(async flat => {
         const rent = new Rent();
         rent.idflat = flat.id;
+        const Time = new Date();
         rent.TypeOfApartment = flat.roomNum;
         rent.Address = flat.street;
         rent.Area = flat.area;
         rent.Offer = flat.offer;
         rent.Square = flat.square;
         rent.Price = flat.price;
-       // rent.Date = flat.id;
+        rent.Date = Time;
         await connection.manager.save(rent);
     });
 
