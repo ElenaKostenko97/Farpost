@@ -4,8 +4,6 @@ const concat = require("lodash/concat");
 const range = require("lodash/range");
 const iconv = require("iconv-lite");
 
-//отправить данные
-
 const tasks = {
     title: "tws",
     url: "https://www.farpost.ru/vladivostok/realty/rent_flats/?pageSize=50&plashka-off=1&ajax=1"
