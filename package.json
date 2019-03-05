@@ -3,13 +3,15 @@
    "version": "0.0.1",
    "description": "Awesome project developed with TypeORM.",
    "devDependencies": {
-      "ts-node": "3.3.0",
+      "@types/express": "^4.16.1",
       "@types/node": "^8.0.29",
+      "ts-node": "3.3.0",
       "typescript": "2.5.2"
    },
    "dependencies": {
       "axios": "^0.18.0",
       "cheerio": "^1.0.0-rc.2",
+      "express": "^4.16.4",
       "iconv-lite": "^0.4.24",
       "lodash": "^4.17.11",
       "pg": "^7.3.0",

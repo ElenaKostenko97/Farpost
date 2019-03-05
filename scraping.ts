@@ -4,6 +4,7 @@ const concat = require("lodash/concat");
 const range = require("lodash/range");
 const iconv = require("iconv-lite");
 
+//отправить данные
 
 const tasks = {
     title: "tws",
