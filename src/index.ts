@@ -8,14 +8,10 @@ import {AppRoutes} from "./routes";
 import * as express from "express";
 import  * as bodyParser from "body-parser";
 
-
-
 createConnection().then(async connection => {
     const promise = await load();
     console.log(promise);
-
-
-
+    
     const promiseFlat = promise.map(async flat => {
         const rent = new Rent();
         const Time = new Date();
