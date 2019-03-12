@@ -1,17 +1,21 @@
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 import {Request, Response} from "express";
-import {User} from "./entity/User";
 import {Rent} from "./entity/Rent";
 import {load} from "../scraping";
 import {AppRoutes} from "./routes";
 import * as express from "express";
 import  * as bodyParser from "body-parser";
+import {cors} from "cors";
+
 
 createConnection().then(async connection => {
+
+    const cors = require('cors');
+
     const promise = await load();
     console.log(promise);
-    
+
     const promiseFlat = promise.map(async flat => {
         const rent = new Rent();
         const Time = new Date();
@@ -30,6 +34,7 @@ createConnection().then(async connection => {
 
     // create express app
     const app = express();
+    app.use(cors());
     app.use(bodyParser.json());
 
     // register all application routes
@@ -42,22 +47,9 @@ createConnection().then(async connection => {
     });
 
     // run app
-    app.listen(3000);
+    app.listen(4000);
 
     console.log("Express application is up and running on port 3000");
-
-    console.log("Inserting a new user into the database...");
-    const user = new User();
-    user.firstName = "Timber";
-    user.lastName = "Saw";
-    user.age = 25;
-    await connection.manager.save(user);
-    console.log("Saved a new user with id: " + user.id);
-
-    console.log("Loading users from the database...");
-    const users = await connection.manager.find(User);
-    console.log("Loaded users: ", users);
-
     console.log("Here you can setup and run express/koa/any other framework.");
 
 }).catch(error => console.log(error));
