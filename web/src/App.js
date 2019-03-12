@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
+//придумать виды анализа (подробно их расписать)
+
 class App extends Component {
 
     state = {
@@ -23,8 +25,8 @@ class App extends Component {
     render() {
 
         if(this.state.loading){
-            return <div>loading...</div>
-        };
+            return <h1>loading...</h1>
+        }
 
         return (
             <div className="App">
