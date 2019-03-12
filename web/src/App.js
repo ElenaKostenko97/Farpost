@@ -25,7 +25,22 @@ class App extends Component {
     render() {
 
         if(this.state.loading){
-            return <h1>loading...</h1>
+            return (
+            <div className="App">
+                <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo"/>
+                    <button onClick={() => (
+                        axios.get('http://localhost:4000/posts')
+                            .then(res => {
+                                const webdata = res.data;
+                                this.setState({webdata});
+                                this.setState({loading: false});
+                            }))}>Обновить данные
+                    </button>
+                    <h1>loading...</h1>
+                </header>
+                </div>
+            )
         }
 
         return (
