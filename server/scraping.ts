@@ -1,3 +1,5 @@
+import {Rent} from "./src/entity/Rent";
+
 const axios = require("axios");
 const cheerio = require("cheerio");
 const concat = require("lodash/concat");
@@ -32,8 +34,12 @@ export async function load() {
 
                 const id = $(el).find("[data-bulletin-id]").data("bulletin-id");
                 const title = $(el).find('div[class="title"] > a').text();
-                const price = $(el).find('span[data-role="price"]').text();
+                const newprice = $(el).find('span[data-role="price"]').text();
                 const address = $(el).find('div[class="annotation auto-shy"]').text();
+
+                const newprice2 =newprice.slice(0,-1);
+
+                const price = newprice2.replace(/\s+/g, '');
 
                 const newaddress = address.replace(/64, 71 микрорайоны/gi, '64,71 микрорайоны');
 
@@ -45,7 +51,9 @@ export async function load() {
 
                 const area = addressSplit[0];
                 const offer = addressSplit[1];
-                const square = addressSplit[2];
+                const newsquare = addressSplit[2];
+                const square=newsquare.slice(0,-7);
+
 
                 if (titleSplit.length == 2 && addressSplit.length == 3){
                     return {id, title, price, newaddress, roomNum, street, area, offer, square};

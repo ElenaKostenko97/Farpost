@@ -1,7 +1,7 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 
 @Entity()
-export class Rent {
+export class Rent extends BaseEntity{
 
     @PrimaryGeneratedColumn() //id
     id: number;
@@ -25,7 +25,7 @@ export class Rent {
     Square: string;
 
     @Column({nullable: true}) //Цена
-    Price: string;
+    Price: number;
 
     @Column({nullable: true}) //Дата размещения
     Date: Date;

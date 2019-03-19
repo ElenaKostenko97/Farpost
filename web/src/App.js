@@ -3,8 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
-//придумать виды анализа (подробно их расписать)
-
 class App extends Component {
 
     state = {
@@ -14,7 +12,7 @@ class App extends Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:4000/posts')
+        axios.get('http://localhost:4000/flats')
             .then(res => {
                 const webdata = res.data;
                 this.setState({webdata});
@@ -23,22 +21,22 @@ class App extends Component {
     }
 
     render() {
-
-        if(this.state.loading){
+        if (this.state.loading) {
             return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <button onClick={() => (
-                        axios.get('http://localhost:4000/posts')
-                            .then(res => {
-                                const webdata = res.data;
-                                this.setState({webdata});
-                                this.setState({loading: false});
-                            }))}>Обновить данные
-                    </button>
-                    <h1>loading...</h1>
-                </header>
+
+                <div className="App">
+                    <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo"/>
+                        <button onClick={() => (
+                            axios.get('http://localhost:4000/flats')
+                                .then(res => {
+                                    const webdata = res.data;
+                                    this.setState({webdata});
+                                    this.setState({loading: false});
+                                }))}>Обновить данные
+                        </button>
+                        <h1>loading...</h1>
+                    </header>
                 </div>
             )
         }
@@ -48,20 +46,54 @@ class App extends Component {
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
                     <button onClick={() => (
-                        axios.get('http://localhost:4000/posts')
-                        .then(res => {
-                            const webdata = res.data;
-                            this.setState({webdata});
-                            this.setState({loading: false});
-                        }))}>Обновить данные
+                        axios.get('http://localhost:4000/flats')
+                            .then(res => {
+                                const webdata = res.data;
+                                this.setState({webdata});
+                                this.setState({loading: false});
+                            }))}>Обновить данные
                     </button>
+                    <div className="butt">
+                        <button onClick={this.fetchRoom}>Комната
+                        </button>
+                        <p>Количество сдаваемых квартир: {this.state.totalrooms1}</p>
+                        <p>Средняя цена: {this.state.averagecost1}</p>
+                    </div>
+
+                    <div className="butt">
+                        <button onClick={this.fetchGost}>Гостинки
+                        </button>
+                        <p>Количество сдаваемых квартир: {this.state.totalrooms2}</p>
+                        <p>Средняя цена: {this.state.averagecost2}</p>
+                    </div>
+
+                    <div className="butt">
+                        <button onClick={this.fetchOne}>1-комнатные
+                        </button>
+                        <p>Количество сдаваемых квартир: {this.state.totalrooms3}</p>
+                        <p>Средняя цена: {this.state.averagecost3}</p>
+                    </div>
+
+                    <div className="butt">
+                        <button onClick={this.fetchTwo}>2-комнатные
+                        </button>
+                        <p>Количество сдаваемых квартир: {this.state.totalrooms4}</p>
+                        <p>Средняя цена: {this.state.averagecost4}</p>
+                    </div>
+
+                    <div className="butt">
+                        <button onClick={this.fetchThree}>3-комнатные
+                        </button>
+                        <p>Количество сдаваемых квартир: {this.state.totalrooms5}</p>
+                        <p>Средняя цена: {this.state.averagecost5}</p>
+                    </div>
                 </header>
 
                 <div>
                     <table>
                         <td>id
                             {this.state.webdata.map(post =>
-                                    <tr key={post.id}>{post.idflat}</tr>
+                                <tr key={post.id}>{post.idflat}</tr>
                             )}
                         </td>
                         <td>Тип квартиры
@@ -84,12 +116,12 @@ class App extends Component {
                                 <tr key={post.id}>{post.Offer}</tr>
                             )}
                         </td>
-                        <td>Площадь
+                        <td>Площадь (кв. м.)
                             {this.state.webdata.map(post =>
                                 <tr key={post.id}>{post.Square}</tr>
                             )}
                         </td>
-                        <td>Цена
+                        <td>Цена (руб.)
                             {this.state.webdata.map(post =>
                                 <tr key={post.id}>{post.Price}</tr>
                             )}
@@ -103,6 +135,101 @@ class App extends Component {
                 </div>
             </div>
         );
+    }
+
+    fetchRoom = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/room');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+
+        let total = 0;
+
+        for (let i = 0; i < data.length; i++) {
+            total = total + data[i].Price;
+        }
+
+        const avcost = (total / data.length);
+
+        this.setState({totalrooms1: data.length});
+        this.setState({averagecost1: avcost.toFixed(2)});
+
+    }
+
+    fetchGost = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/gost');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+
+        let total = 0;
+
+        for (let i = 0; i < data.length; i++) {
+            total = total + data[i].Price;
+        }
+
+        const avcost = (total / data.length);
+
+        this.setState({totalrooms2: data.length});
+        this.setState({averagecost2: avcost.toFixed(2)});
+
+    }
+
+    fetchOne = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/one');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+
+        let total = 0;
+
+        for (let i = 0; i < data.length; i++) {
+            total = total + data[i].Price;
+        }
+
+        const avcost = (total / data.length);
+
+        this.setState({totalrooms3: data.length});
+        this.setState({averagecost3: avcost.toFixed(2)});
+
+    }
+
+    fetchTwo = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/two');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+
+        let total = 0;
+
+        for (let i = 0; i < data.length; i++) {
+            total = total + data[i].Price;
+        }
+
+        const avcost = (total / data.length);
+
+        this.setState({totalrooms4: data.length});
+        this.setState({averagecost4: avcost.toFixed(2)});
+
+    }
+
+    fetchThree = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/three');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+
+        let total = 0;
+
+        for (let i = 0; i < data.length; i++) {
+            total = total + data[i].Price;
+        }
+
+        const avcost = (total / data.length);
+
+        this.setState({totalrooms5: data.length});
+        this.setState({averagecost5: avcost.toFixed(2)});
+
     }
 }
 

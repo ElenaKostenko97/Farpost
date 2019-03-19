@@ -2,17 +2,15 @@ import {Request, Response} from "express";
 import {getManager} from "typeorm";
 import {Rent} from "../entity/Rent";
 
-/**
- * Loads all posts from the database.
- */
-export async function postGetAllAction(request: Request, response: Response) {
+export async function postGetTwoAction(request: Request, response: Response) {
 
     // get a post repository to perform operations with post
     const postRepository = getManager().getRepository(Rent);
 
     // load a post by a given post id
-    const flats = await postRepository.find();
+    // const one = await postRepository.find();
+    const twos = await Rent.find({where: { TypeOfApartment: "2-комнатная"}});
 
     // return loaded posts
-    response.send(flats);
+    response.send(twos);
 }
