@@ -3,7 +3,10 @@ import {postGetOneAction} from "./controller/PostGetOneroomAction";
 import {postGetTwoAction} from "./controller/PostGetTwoAction";
 import {postGetThreeAction} from "./controller/PostGetThreeAction";
 import {postGetGostAction} from "./controller/PostGetGostAction";
+// import {GetGostActionDate} from "./controller/PostGetGostAction";
 import {postGetRoomAction} from "./controller/PostGetRoomAction";
+import {postGetFourAction} from "./controller/PostGetFourAction";
+
 
 export const AppRoutes = [
     {
@@ -48,3 +51,11 @@ export const AppGostRoutes = [
         action: postGetGostAction
     }
 ];
+export const AppFourRoutes = [
+    {
+        path: "/four",
+        method: "get",
+        action: postGetFourAction
+    }
+];
+

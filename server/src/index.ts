@@ -6,9 +6,11 @@ import {load} from "../scraping";
 import {AppRoutes} from "./routes";
 import {AppRoomRoutes} from "./routes";
 import {AppOneRoutes} from "./routes";
+import {AppFourRoutes} from "./routes";
 import {AppTwoRoutes} from "./routes";
 import {AppThreeRoutes} from "./routes";
 import {AppGostRoutes} from "./routes";
+import {AppGostDateRoutes} from "./routes";
 import * as express from "express";
 import  * as bodyParser from "body-parser";
 import {cors} from "cors";
@@ -84,6 +86,22 @@ createConnection().then(async connection => {
     });
 
     AppRoomRoutes.forEach(route => {
+        app[route.method](route.path, (request: Request, response: Response, next: Function) => {
+            route.action(request, response)
+                .then(() => next)
+                .catch(err => next(err));
+        });
+    });
+
+    AppFourRoutes.forEach(route => {
+        app[route.method](route.path, (request: Request, response: Response, next: Function) => {
+            route.action(request, response)
+                .then(() => next)
+                .catch(err => next(err));
+        });
+    });
+
+    AppGostDateRoutes.forEach(route => {
         app[route.method](route.path, (request: Request, response: Response, next: Function) => {
             route.action(request, response)
                 .then(() => next)

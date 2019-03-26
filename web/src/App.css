@@ -47,12 +47,22 @@ button{
   text-align: center;
   font-size: 20px;
   border-radius: 12px;
-  width: 150px;
+  width: 170px;
   border: none;
 }
 
 button:hover {
   color: white;
+}
+
+table{
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+input{
+  height: 25px;
+  margin: 10px;
 }
 
 

@@ -53,39 +53,94 @@ class App extends Component {
                                 this.setState({loading: false});
                             }))}>Обновить данные
                     </button>
+                    <div className="date">
+                        <p>Введите дату:</p>
+                        <input type="date" id="onedayf"/>-
+                        <input type="date" id="nextdayf"/>
+                        <button onClick={this.fetchFlatsDate}>Показать квартиры</button>
+                    </div>
                     <div className="butt">
-                        <button onClick={this.fetchRoom}>Комната
-                        </button>
-                        <p>Количество сдаваемых квартир: {this.state.totalrooms1}</p>
-                        <p>Средняя цена: {this.state.averagecost1}</p>
+                        <button onClick={this.fetchRoom}>Комната</button>
+                        <div className="count">
+                            <p>Количество сдаваемых квартир: {this.state.totalrooms1}</p>
+                            <p>Средняя цена: {this.state.averagecost1}</p>
+                        </div>
+                        <div className="date">
+                            <p>Введите дату:</p>
+                            <input type="date" id="onedayr"/>-
+                            <input type="date" id="nextdayr"/>
+                            <button onClick={this.fetchRoomDate}>Показать квартиры</button>
+                        </div>
                     </div>
 
                     <div className="butt">
-                        <button onClick={this.fetchGost}>Гостинки
-                        </button>
-                        <p>Количество сдаваемых квартир: {this.state.totalrooms2}</p>
-                        <p>Средняя цена: {this.state.averagecost2}</p>
+                        <button onClick={this.fetchGost}>Гостинки</button>
+                        <div className="count">
+                            <p>Количество сдаваемых квартир: {this.state.totalrooms2}</p>
+                            <p>Средняя цена: {this.state.averagecost2}</p>
+                        </div>
+                        <div className="date">
+                            <p>Введите дату:</p>
+                            <input type="date" id="onedayg"/>-
+                            <input type="date" id="nextdayg"/>
+                            <button onClick={this.fetchGostDate}>Показать квартиры</button>
+                        </div>
                     </div>
 
                     <div className="butt">
-                        <button onClick={this.fetchOne}>1-комнатные
-                        </button>
-                        <p>Количество сдаваемых квартир: {this.state.totalrooms3}</p>
-                        <p>Средняя цена: {this.state.averagecost3}</p>
+                        <button onClick={this.fetchOne}>1-комнатные</button>
+                        <div className="count">
+                            <p>Количество сдаваемых квартир: {this.state.totalrooms3}</p>
+                            <p>Средняя цена: {this.state.averagecost3}</p>
+                        </div>
+                        <div className="date">
+                            <p>Введите дату:</p>
+                            <input type="date" id="oneday1"/>-
+                            <input type="date" id="nextday1"/>
+                            <button onClick={this.fetchOneDate}>Показать квартиры</button>
+                        </div>
                     </div>
 
                     <div className="butt">
-                        <button onClick={this.fetchTwo}>2-комнатные
-                        </button>
-                        <p>Количество сдаваемых квартир: {this.state.totalrooms4}</p>
-                        <p>Средняя цена: {this.state.averagecost4}</p>
+                        <button onClick={this.fetchTwo}>2-комнатные</button>
+                        <div className="count">
+                            <p>Количество сдаваемых квартир: {this.state.totalrooms4}</p>
+                            <p>Средняя цена: {this.state.averagecost4}</p>
+                        </div>
+                        <div className="date">
+                            <p>Введите дату:</p>
+                            <input type="date" id="oneday2"/>-
+                            <input type="date" id="nextday2"/>
+                            <button onClick={this.fetchTwoDate}>Показать квартиры</button>
+                        </div>
                     </div>
 
                     <div className="butt">
-                        <button onClick={this.fetchThree}>3-комнатные
-                        </button>
-                        <p>Количество сдаваемых квартир: {this.state.totalrooms5}</p>
-                        <p>Средняя цена: {this.state.averagecost5}</p>
+                        <button onClick={this.fetchThree}>3-комнатные</button>
+                        <div className="count">
+                            <p>Количество сдаваемых квартир: {this.state.totalrooms5}</p>
+                            <p>Средняя цена: {this.state.averagecost5}</p>
+                        </div>
+                        <div className="date">
+                            <p>Введите дату:</p>
+                            <input type="date" id="oneday3"/>-
+                            <input type="date" id="nextday3"/>
+                            <button onClick={this.fetchThreeDate}>Показать квартиры</button>
+                        </div>
+                    </div>
+
+                    <div className="butt">
+                        <button onClick={this.fetchFour}>4-комнатные</button>
+                        <div className="count">
+                            <p>Количество сдаваемых квартир: {this.state.totalrooms6}</p>
+                            <p>Средняя цена: {this.state.averagecost6}</p>
+                        </div>
+                        <div className="date">
+                            <p>Введите дату:</p>
+                            <input type="date" id="oneday4"/>-
+                            <input type="date" id="nextday4"/>
+                            <button onClick={this.fetchFourDate}>Показать квартиры</button>
+                        </div>
                     </div>
                 </header>
 
@@ -230,6 +285,102 @@ class App extends Component {
         this.setState({totalrooms5: data.length});
         this.setState({averagecost5: avcost.toFixed(2)});
 
+    }
+
+    fetchFour = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/four');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+
+        let total = 0;
+
+        for (let i = 0; i < data.length; i++) {
+            total = total + data[i].Price;
+        }
+
+        const avcost = (total / data.length);
+
+        this.setState({totalrooms6: data.length});
+        this.setState({averagecost6: avcost.toFixed(2)});
+
+    }
+
+    fetchFlatsDate = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/flats');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+        const dayone = document.getElementById("onedayf").value;
+        const daynext = document.getElementById("nextdayf").value;
+        console.log(dayone);
+        console.log(daynext);
+    }
+
+    fetchRoomDate = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/room');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+        const dayone = document.getElementById("onedayr").value;
+        const daynext = document.getElementById("nextdayr").value;
+        console.log(dayone);
+        console.log(daynext);
+    }
+
+    fetchGostDate = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/gost');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+        const dayone = document.getElementById("onedayg").value;
+        const daynext = document.getElementById("nextdayg").value;
+        console.log(dayone);
+        console.log(daynext);
+    }
+
+    fetchOneDate = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/one');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+        const dayone = document.getElementById("oneday1").value;
+        const daynext = document.getElementById("nextday1").value;
+        console.log(dayone);
+        console.log(daynext);
+    }
+
+    fetchTwoDate = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/two');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+        const dayone = document.getElementById("oneday2").value;
+        const daynext = document.getElementById("nextday2").value;
+        console.log(dayone);
+        console.log(daynext);
+    }
+
+    fetchThreeDate = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/three');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+        const dayone = document.getElementById("oneday3").value;
+        const daynext = document.getElementById("nextday3").value;
+        console.log(dayone);
+        console.log(daynext);
+    }
+
+    fetchFourDate = async () => {
+
+        const {data} = await axios.get('http://localhost:4000/four');
+        this.setState({webdata: data});
+        this.setState({loading: false});
+        const dayone = document.getElementById("oneday4").value;
+        const daynext = document.getElementById("nextday4").value;
+        console.log(dayone);
+        console.log(daynext);
     }
 }
 

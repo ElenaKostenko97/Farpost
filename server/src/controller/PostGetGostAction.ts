@@ -2,6 +2,8 @@ import {Request, Response} from "express";
 import {getManager} from "typeorm";
 import {Rent} from "../entity/Rent";
 
+
+
 export async function postGetGostAction(request: Request, response: Response) {
 
     // get a post repository to perform operations with post
@@ -14,3 +16,4 @@ export async function postGetGostAction(request: Request, response: Response) {
     // return loaded posts
     response.send(gosts);
 }
+
