@@ -180,7 +180,8 @@ export class App extends Component {
                 </div>
             </div>
         );
-    }
+    };
+
     fetchFlats= async () => {
 
         const {data} = await axios.get('http://localhost:4000/flats');
@@ -199,6 +200,7 @@ export class App extends Component {
         this.setState({averagecost: avcost.toFixed(2)});
 
     };
+
     fetchRoom = async () => {
 
         const {data} = await axios.get('http://localhost:4000/room');
@@ -323,23 +325,21 @@ export class App extends Component {
                 dayone, daynext
             });
 
-            this.setState({webdata: data[0]});
+            this.setState({webdata: data});
             this.setState({loading: false});
 
             let total = 0;
 
-            for (let i = 0; i < data[0].length; i++) {
-                total = total + data[0][i].Price;
+            for (let i = 0; i < data.length; i++) {
+                total = total + data[i].Price;
             }
 
-            const avcost = (total / data[0].length);
+            const avcost = (total / data.length);
 
-            this.setState({totalrooms: data[0].length});
+            this.setState({totalrooms: data.length});
             this.setState({averagecost: avcost.toFixed(2)});
 
-        };
-
-
+        }
     };
 
     fetchRoomDate = async () => {
@@ -352,21 +352,21 @@ export class App extends Component {
                 dayone, daynext
             });
 
-            this.setState({webdata: data[0]});
+            this.setState({webdata: data});
             this.setState({loading: false});
 
             let total = 0;
 
-            for (let i = 0; i < data[0].length; i++) {
-                total = total + data[0][i].Price;
+            for (let i = 0; i < data.length; i++) {
+                total = total + data[i].Price;
             }
 
-            const avcost = (total / data[0].length);
+            const avcost = (total / data.length);
 
-            this.setState({totalrooms1: data[0].length});
+            this.setState({totalrooms1: data.length});
             this.setState({averagecost1: avcost.toFixed(2)});
 
-        };
+        }
     };
 
     fetchGostDate = async () => {
@@ -380,21 +380,21 @@ export class App extends Component {
                 dayone, daynext
             });
 
-            this.setState({webdata: data[0]});
+            this.setState({webdata: data});
             this.setState({loading: false});
 
             let total = 0;
 
-            for (let i = 0; i < data[0].length; i++) {
-                total = total + data[0][i].Price;
+            for (let i = 0; i < data.length; i++) {
+                total = total + data[i].Price;
             }
 
-            const avcost = (total / data[0].length);
+            const avcost = (total / data.length);
 
-            this.setState({totalrooms2: data[0].length});
+            this.setState({totalrooms2: data.length});
             this.setState({averagecost2: avcost.toFixed(2)});
 
-        };
+        }
     };
 
     fetchOneDate = async () => {
@@ -407,21 +407,21 @@ export class App extends Component {
                 dayone, daynext
             });
 
-            this.setState({webdata: data[0]});
+            this.setState({webdata: data});
             this.setState({loading: false});
 
             let total = 0;
 
-            for (let i = 0; i < data[0].length; i++) {
-                total = total + data[0][i].Price;
+            for (let i = 0; i < data.length; i++) {
+                total = total + data[i].Price;
             }
 
-            const avcost = (total / data[0].length);
+            const avcost = (total / data.length);
 
-            this.setState({totalrooms3: data[0].length});
+            this.setState({totalrooms3: data.length});
             this.setState({averagecost3: avcost.toFixed(2)});
 
-        };
+        }
     };
 
     fetchTwoDate = async () => {
@@ -434,21 +434,21 @@ export class App extends Component {
                 dayone, daynext
             });
 
-            this.setState({webdata: data[0]});
+            this.setState({webdata: data});
             this.setState({loading: false});
 
             let total = 0;
 
-            for (let i = 0; i < data[0].length; i++) {
-                total = total + data[0][i].Price;
+            for (let i = 0; i < data.length; i++) {
+                total = total + data[i].Price;
             }
 
-            const avcost = (total / data[0].length);
+            const avcost = (total / data.length);
 
-            this.setState({totalrooms4: data[0].length});
+            this.setState({totalrooms4: data.length});
             this.setState({averagecost4: avcost.toFixed(2)});
 
-        };
+        }
     };
 
     fetchThreeDate = async () => {
@@ -461,21 +461,21 @@ export class App extends Component {
                 dayone, daynext
             });
 
-            this.setState({webdata: data[0]});
+            this.setState({webdata: data});
             this.setState({loading: false});
 
             let total = 0;
 
-            for (let i = 0; i < data[0].length; i++) {
-                total = total + data[0][i].Price;
+            for (let i = 0; i < data.length; i++) {
+                total = total + data[i].Price;
             }
 
-            const avcost = (total / data[0].length);
+            const avcost = (total / data.length);
 
-            this.setState({totalrooms5: data[0].length});
+            this.setState({totalrooms5: data.length});
             this.setState({averagecost5: avcost.toFixed(2)});
 
-        };
+        }
     };
 
     fetchFourDate = async () => {
@@ -488,21 +488,21 @@ export class App extends Component {
                 dayone, daynext
             });
 
-            this.setState({webdata: data[0]});
+            this.setState({webdata: data});
             this.setState({loading: false});
 
             let total = 0;
 
-            for (let i = 0; i < data[0].length; i++) {
-                total = total + data[0][i].Price;
+            for (let i = 0; i < data.length; i++) {
+                total = total + data[i].Price;
             }
 
-            const avcost = (total / data[0].length);
+            const avcost = (total / data.length);
 
-            this.setState({totalrooms6: data[0].length});
+            this.setState({totalrooms6: data.length});
             this.setState({averagecost6: avcost.toFixed(2)});
 
-        };
+        }
     }
 }
 

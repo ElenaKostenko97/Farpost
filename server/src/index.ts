@@ -5,9 +5,8 @@ import {Rent} from "./entity/Rent";
 import {load} from "../scraping";
 import {AppFlats} from "./routes";
 import * as express from "express";
-import  * as bodyParser from "body-parser";
+import * as bodyParser from "body-parser";
 import {cors} from "cors";
-
 
 createConnection().then(async connection => {
 
