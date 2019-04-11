@@ -51,8 +51,8 @@ export async function load() {
 
                 const area = addressSplit[0];
                 const offer = addressSplit[1];
-                const newsquare = addressSplit[2];
-                const square=newsquare.slice(0,-7);
+                const square = addressSplit[2];
+                //const square = newsquare.slice(0,-6);
 
 
                 if (titleSplit.length == 2 && addressSplit.length == 3){

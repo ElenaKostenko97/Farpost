@@ -1,61 +1,80 @@
-import {postGetAllAction} from "./controller/PostGetAllAction";
-import {postGetOneAction} from "./controller/PostGetOneroomAction";
-import {postGetTwoAction} from "./controller/PostGetTwoAction";
-import {postGetThreeAction} from "./controller/PostGetThreeAction";
-import {postGetGostAction} from "./controller/PostGetGostAction";
-// import {GetGostActionDate} from "./controller/PostGetGostAction";
-import {postGetRoomAction} from "./controller/PostGetRoomAction";
-import {postGetFourAction} from "./controller/PostGetFourAction";
+import {getFlats, getRoom, getGost, getOne, getTwo, getThree, getFour,
+    postDateFlats, postDateRoom, postDateGost, postDateOne, postDateTwo,
+    postDateThree, postDateFour} from "./controller/PostGetFlats";
 
-
-export const AppRoutes = [
+export const AppFlats = [
     {
         path: "/flats",
         method: "get",
-        action: postGetAllAction
-    }];
-
-export const AppRoomRoutes = [
+        action: getFlats
+    },
     {
         path: "/room",
         method: "get",
-        action: postGetRoomAction
-    }
-];
-
-export const AppOneRoutes = [
-    {
-        path: "/one",
-        method: "get",
-        action: postGetOneAction
-    }
-];
-export const AppTwoRoutes = [
-    {
-        path: "/two",
-        method: "get",
-        action: postGetTwoAction
-    }
-];
-export const AppThreeRoutes = [
-    {
-        path: "/three",
-        method: "get",
-        action: postGetThreeAction
-    }
-];
-export const AppGostRoutes = [
+        action: getRoom
+    },
     {
         path: "/gost",
         method: "get",
-        action: postGetGostAction
-    }
-];
-export const AppFourRoutes = [
+        action: getGost
+    },
+    {
+        path: "/one",
+        method: "get",
+        action: getOne
+    },
+    {
+        path: "/two",
+        method: "get",
+        action: getTwo
+    },
+    {
+        path: "/three",
+        method: "get",
+        action: getThree
+    },
     {
         path: "/four",
         method: "get",
-        action: postGetFourAction
+        action: getFour
+    },
+    {
+        path: "/dateflats",
+        method: "post",
+        action: postDateFlats
+    },
+    {
+        path: "/dategost",
+        method: "post",
+        action: postDateGost
+    },
+    {
+        path: "/dateroom",
+        method: "post",
+        action: postDateRoom
+    },
+    {
+        path: "/dateone",
+        method: "post",
+        action: postDateOne
+    },
+    {
+        path: "/datetwo",
+        method: "post",
+        action: postDateTwo
+    },
+    {
+        path: "/datethree",
+        method: "post",
+        action: postDateThree
+    },
+    {
+        path: "/datefour",
+        method: "post",
+        action: postDateFour
     }
 ];
+
+
+
 

@@ -3,14 +3,7 @@ import {createConnection} from "typeorm";
 import {Request, Response} from "express";
 import {Rent} from "./entity/Rent";
 import {load} from "../scraping";
-import {AppRoutes} from "./routes";
-import {AppRoomRoutes} from "./routes";
-import {AppOneRoutes} from "./routes";
-import {AppFourRoutes} from "./routes";
-import {AppTwoRoutes} from "./routes";
-import {AppThreeRoutes} from "./routes";
-import {AppGostRoutes} from "./routes";
-import {AppGostDateRoutes} from "./routes";
+import {AppFlats} from "./routes";
 import * as express from "express";
 import  * as bodyParser from "body-parser";
 import {cors} from "cors";
@@ -45,63 +38,7 @@ createConnection().then(async connection => {
     app.use(bodyParser.json());
 
     // register all application routes
-    AppRoutes.forEach(route => {
-        app[route.method](route.path, (request: Request, response: Response, next: Function) => {
-            route.action(request, response)
-                .then(() => next)
-                .catch(err => next(err));
-        });
-    });
-
-    AppOneRoutes.forEach(route => {
-        app[route.method](route.path, (request: Request, response: Response, next: Function) => {
-            route.action(request, response)
-                .then(() => next)
-                .catch(err => next(err));
-        });
-    });
-
-    AppTwoRoutes.forEach(route => {
-        app[route.method](route.path, (request: Request, response: Response, next: Function) => {
-            route.action(request, response)
-                .then(() => next)
-                .catch(err => next(err));
-        });
-    });
-
-    AppThreeRoutes.forEach(route => {
-        app[route.method](route.path, (request: Request, response: Response, next: Function) => {
-            route.action(request, response)
-                .then(() => next)
-                .catch(err => next(err));
-        });
-    });
-
-    AppGostRoutes.forEach(route => {
-        app[route.method](route.path, (request: Request, response: Response, next: Function) => {
-            route.action(request, response)
-                .then(() => next)
-                .catch(err => next(err));
-        });
-    });
-
-    AppRoomRoutes.forEach(route => {
-        app[route.method](route.path, (request: Request, response: Response, next: Function) => {
-            route.action(request, response)
-                .then(() => next)
-                .catch(err => next(err));
-        });
-    });
-
-    AppFourRoutes.forEach(route => {
-        app[route.method](route.path, (request: Request, response: Response, next: Function) => {
-            route.action(request, response)
-                .then(() => next)
-                .catch(err => next(err));
-        });
-    });
-
-    AppGostDateRoutes.forEach(route => {
+    AppFlats.forEach(route => {
         app[route.method](route.path, (request: Request, response: Response, next: Function) => {
             route.action(request, response)
                 .then(() => next)
